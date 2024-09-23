@@ -8,7 +8,7 @@ const Calculator = () => {
   const [calculations, setCalculations] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/calculator')
+    axios.get('http://localhost:3000/api/calculator')
       .then(res => setCalculations(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -17,7 +17,7 @@ const Calculator = () => {
     e.preventDefault();
     try {
       const evalResult = eval(expression); // Evaluate expression (simple example)
-      axios.post('http://localhost:5000/api/calculator', { expression, result: evalResult })
+      axios.post('http://localhost:3000/api/calculator', { expression, result: evalResult })
         .then(() => {
           setCalculations([...calculations, { expression, result: evalResult }]);
           setExpression('');

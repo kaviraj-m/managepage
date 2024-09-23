@@ -9,14 +9,14 @@ const Notes = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/notes')
+    axios.get('http://localhost:3000/api/notes')
       .then(res => setNotes(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/notes', { title, content })
+    axios.post('http://localhost:3000/api/notes', { title, content })
       .then(res => {
         setNotes([...notes, { title, content, id: res.data.id }]);
         setTitle('');
@@ -26,7 +26,7 @@ const Notes = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/notes/${id}`)
+    axios.delete(`http://localhost:3000/api/notes/${id}`)
       .then(() => setNotes(notes.filter(note => note.id !== id)))
       .catch(err => console.error(err));
   };

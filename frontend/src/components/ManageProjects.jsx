@@ -7,7 +7,7 @@ const ManageProjects = () => {
   const [selectedProjects, setSelectedProjects] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/projects')
+    axios.get('http://localhost:3000/api/projects')
       .then((response) => {
         if (Array.isArray(response.data)) {
           setProjects(response.data);
@@ -26,9 +26,9 @@ const ManageProjects = () => {
   };
 
   const handleAction = (action) => {
-    axios.post('http://localhost:5000/api/projects/updateStatus', { ids: selectedProjects, action })
+    axios.post('http://localhost:3000/api/projects/updateStatus', { ids: selectedProjects, action })
       .then(() => {
-        axios.get('http://localhost:5000/api/projects').then((response) => {
+        axios.get('http://localhost:3000/api/projects').then((response) => {
           if (Array.isArray(response.data)) {
             setProjects(response.data);
           } else {

@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "root",
+    "password": "meow",
+    "database": "db",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

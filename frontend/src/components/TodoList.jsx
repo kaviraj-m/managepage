@@ -8,14 +8,14 @@ const TodoList = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/todolist')
+    axios.get('http://localhost:3000/api/todolist')
       .then(res => setTasks(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const handleAddTask = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/todolist', { task, isComplete: false })
+    axios.post('http://localhost:3000/api/todolist', { task, isComplete: false })
       .then(res => {
         setTasks([...tasks, { id: res.data.id, task, isComplete: false }]);
         setTask('');
@@ -24,7 +24,7 @@ const TodoList = () => {
   };
 
   const handleToggleComplete = (id, isComplete) => {
-    axios.put(`http://localhost:5000/api/todolist/${id}`, { isComplete: !isComplete })
+    axios.put(`http://localhost:3000/api/todolist/${id}`, { isComplete: !isComplete })
       .then(() => {
         setTasks(tasks.map(t => t.id === id ? { ...t, isComplete: !isComplete } : t));
       })
@@ -32,7 +32,7 @@ const TodoList = () => {
   };
 
   const handleDeleteTask = (id) => {
-    axios.delete(`http://localhost:5000/api/todolist/${id}`)
+    axios.delete(`http://localhost:3000/api/todolist/${id}`)
       .then(() => setTasks(tasks.filter(t => t.id !== id)))
       .catch(err => console.error(err));
   };

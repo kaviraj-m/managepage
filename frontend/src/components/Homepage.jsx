@@ -7,7 +7,7 @@ const HomePage = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/projects')
+    axios.get('http://localhost:3000/api/projects')
       .then((res) => {
         if (Array.isArray(res.data)) {
           setProjects(res.data);
